@@ -7,6 +7,7 @@ class Config:
 
     NEWS_API_KEY = '40a81ce19baa427bb0bfecd3e66b647e'
     NEWS_API_BASE_URL = 'https://newsapi.org/v1/sources/'
+    SECRET_KEY= os.environ.get('SECRET_KEY')
 
 
 
