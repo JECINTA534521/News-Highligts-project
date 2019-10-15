@@ -10,9 +10,10 @@ base_url = None
 
 
 def configure_request(app):
-    global api_key, base_url
+    global api_key, base_url, articles_base_url
     api_key = app.config['NEWS_API_KEY']
     base_url = app.config['NEWS_API_BASE_URL']
+    articles_base_url = app.config['NEWS_ARTICLES_BASE_URL']
 
 def get_sources(source):
     """
@@ -20,7 +21,6 @@ def get_sources(source):
     """
 
     get_sources_url = base_url.format(source, api_key)
-    #get_sources_url = 'https://newsapi.org/v1/sources'.format(source, api_key)
 
     with urllib.request.urlopen(get_sources_url) as url:
         get_sources_data = url.read()
@@ -59,8 +59,8 @@ def get_articles(id):
     '''
     Function to get a source and it's articles
     '''
-    get_articles_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'.format(id,api_key)
-
+    get_articles_url =articles_base_url.format(
+        id, api_key)
     with urllib.request.urlopen(get_articles_url) as url:
         get_articles_data = url.read()
         get_articles_response = json.loads(get_articles_data)
@@ -97,7 +97,8 @@ def process_articles(article_list):
         # if publishedAt != None:
         #     # Call publish_date_format method to convert date to a display-friendly format
         #     #date_to_display = article_item.publish_date_format(publishedAt) (self, author, title, description, urlToImage, url):
-        article_object = Articles(source, title, description, urlToImage, urlToArticle, publishedAt)
+        article_object = Articles(
+            source, title, description, urlToImage, urlToArticle, publishedAt)
         article_results.append(article_object)
 
     return article_results
