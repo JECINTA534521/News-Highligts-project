@@ -39,7 +39,7 @@ Create a file to start the application. `touch start.sh`
 Inside the start file  input the environment variables and start command below.
 ```
 export NEWS_API_KEY=<Get an API KEY from newsapi.com >
-export SECRET_KEY=<Create a secret key>
+
 
 python3.6 manage.py server
 
@@ -66,16 +66,15 @@ While in the activated virtual environment export environment variables and run 
 ```bash
 (env)$ export NEWS_API_KEY=<Your api key>
 (env)$ export SECRET_KEY=<Your secret key>
-(env)$ python3.6  manage.py server
+(env)$ ./start.sh
 ```
 ## Deployment
-To deploy the application, please follow the instructions in [this gist](https://gist.github.com/newtonkiragu/42f2500e56d9c2375a087233587eddd0)
-
+This is the live link to the project:  https://news-highlights-project.herokuapp.com/
 ## Contributing
 Feel free to contribute to this repository to make pull requests.
 
 ## Bugs
-No known bugs if a bug is found create an issue in the [issues section] (https://github.com/JECINTA534521/News-Highligts-project)
+No known bugs if a bug is found feel free to contact me at: jecintawanjirug@gmail.com
 
 ## [LICENSE](LICENSE)
 
